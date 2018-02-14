@@ -23,20 +23,24 @@ public class Journal {
         return String.join(System.lineSeparator(), entries);
     }
 
-    // as we add additional methods regarding persistence, we are adding concerns/responsibilities
-    public void save(String filename) throws FileNotFoundException {
-        try (PrintStream out = new PrintStream(filename)) {
-            out.println(toString());
-        }
-    }
-
-    public void load(String filename) {}
-
-    public void load(URL url) {}
 }
 
 class Persistence {
 
+    public void saveToFile(Journal journal, String filename, boolean overwrite) throws FileNotFoundException {
+        if (overwrite || new File(filename).exists()) {
+            try (PrintStream out = new PrintStream(filename)) {
+                out.println(journal.toString());
+            }
+        }
+    }
+    public Journal load(String filename) {
+        return new Journal();
+    }
+
+    public Journal load(URL url) {
+        return new Journal();
+    }
 }
 
 class Demo
@@ -47,5 +51,11 @@ class Demo
         j.addEntry("today was the best day");
 
         System.out.println(j);
+
+        Persistence p = new Persistence();
+        String filename = "c:\\temp\\journal.txt";
+        p.saveToFile(j, filename, true);
+
+        Runtime.getRuntime().exec("notepad.exe " + filename);
     }
 }
