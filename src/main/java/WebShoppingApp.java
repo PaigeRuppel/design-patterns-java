@@ -44,4 +44,10 @@ class ProductFilter {
     public Stream<Product> filterBySize(List<Product> productList, Size sizeToFilterBy) {
         return productList.stream().filter(p -> p.getSize() == sizeToFilterBy);
     }
+
+    public Stream<Product> filterByColorAndSize(List<Product> productList, Color colorToFilterBy, Size sizeToFilterBy) {
+        return productList.stream().filter(p -> p.getColor() == colorToFilterBy && p.getSize() == sizeToFilterBy);
+    }
+
+    //imagine how hairy this could get as more filters are added to product....
 }
