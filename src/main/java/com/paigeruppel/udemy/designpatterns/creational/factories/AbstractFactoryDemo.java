@@ -54,7 +54,7 @@ class CoffeeFactory implements HotDrinkFactory {
 
 
 // My abstract factory differs significantly from the solution provided in the tutorial - i did not use the Reflections API
-// This solution is less sophisticated - see the tutorial for the full implementation with Reflections
+// See the tutorial for the more involved solution using reflections
 class HotDrinkMachine {
     private HotDrinkFactory drinkFactory = null;
     public HotDrinkMachine(String drink) {
