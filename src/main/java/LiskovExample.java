@@ -51,7 +51,23 @@ class Rectangle {
     public String toString() {
         return  "Rectangle{width=" + width + ", height=" + height + "}";
     }
+
+    public boolean isSquare() {
+        return width == height;
+    }
 }
+
+//factory pattern
+class RectangleFactory {
+    public static Rectangle newRectangle(int width, int height) {
+        return new Rectangle(width, height);
+    }
+
+    public static Rectangle newSquare(int side) {
+        return new Rectangle(side, side);
+    }
+}
+
 
 class Square extends Rectangle {
     public Square() {}
