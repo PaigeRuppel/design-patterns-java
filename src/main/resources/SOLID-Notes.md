@@ -10,3 +10,8 @@
 ## Open Closed Principle (OCP)
 * Should be open for extension but closed for modification
 * See ShoppingApp.java
+
+## Liskov Substitution Principle (LSP)
+* You should be able to substitute a subclass for a base class
+* i.e. if you have an API that uses a base class, swapping in the subclass should not change the correctness of the API
+* 
