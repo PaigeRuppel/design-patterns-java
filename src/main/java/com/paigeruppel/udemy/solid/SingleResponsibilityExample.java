@@ -1,3 +1,5 @@
+package com.paigeruppel.udemy.solid;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;

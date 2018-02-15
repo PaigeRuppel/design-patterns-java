@@ -1,3 +1,5 @@
+package com.paigeruppel.udemy.solid;
+
 public class LiskovExample {
 
     static void useIt(Rectangle r) {
@@ -49,7 +51,7 @@ class Rectangle {
 
     @Override
     public String toString() {
-        return  "Rectangle{width=" + width + ", height=" + height + "}";
+        return  "com.paigeruppel.udemy.solid.Rectangle{width=" + width + ", height=" + height + "}";
     }
 
     public boolean isSquare() {

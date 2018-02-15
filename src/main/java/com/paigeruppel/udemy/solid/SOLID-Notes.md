@@ -30,4 +30,10 @@
    Details should depend on abstractions
 * Abstractions - typically this means either interfaces or abstract classes
 * If possible, use interfaces and abstract classes
+* Breaking strong dependencies between low- and high-level modules greatly increases the flexibility of your code
 
+
+
+### Other Notes/Thoughts
+* All of these principles allow for greater flexibility and reuse.
+* SOLID is a catchy but unfortunate acronym (I think that it evokes images of an impenetrable or unbreakable object). FLUID or ADAPT would be a more descriptive acronym. Sticking to SOLID is like breaking a cinder block down into lego blocks.

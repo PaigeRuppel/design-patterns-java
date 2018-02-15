@@ -1,4 +1,4 @@
-import java.io.PrintStream;
+package com.paigeruppel.udemy.solid;
 
 public class InterfaceSegregationExample {
 }
@@ -67,12 +67,12 @@ class OldFashionedPrinter implements Printer {
     // we don't need these methods - so leave them empty? This will still give the user
     // the impression that faxing and scanning are still supported
 //    @Override
-//    public void fax(Document document) {
+//    public void fax(com.paigeruppel.udemy.solid.Document document) {
 //        throw new Exception(); You could throw an exception, but then it will need to be propagated up to the interface
 //    }
 //
 //    @Override
-//    public void scan(Document document) {
+//    public void scan(com.paigeruppel.udemy.solid.Document document) {
 //
 //    }
 }

@@ -1,3 +1,5 @@
+package com.paigeruppel.udemy.solid;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -61,10 +63,10 @@ class Relationships implements RelationshipBrowser{ // low-level module - simply
 class Research { // high-level module - allows us to perform operations on a low-level module - has business logic
     // but high-level modules should not depend on low-level modules, and that's exactly what this constructor does - violation of DIP
     // instead, this class should depend on abstractions
-//    public Research(Relationships relationships) {
-//        List<Triplet<Person, Relationship, Person>> relations = relationships.getRelations();
+//    public com.paigeruppel.udemy.solid.Research(com.paigeruppel.udemy.solid.Relationships relationships) {
+//        List<com.paigeruppel.udemy.solid.Triplet<com.paigeruppel.udemy.solid.Person, com.paigeruppel.udemy.solid.Relationship, com.paigeruppel.udemy.solid.Person>> relations = relationships.getRelations();
 //        relations.stream()
-//                .filter(p -> p.getValue0().name.equals("John") && p.getValue1() == Relationship.PARENT)
+//                .filter(p -> p.getValue0().name.equals("John") && p.getValue1() == com.paigeruppel.udemy.solid.Relationship.PARENT)
 //                .forEach( ch -> System.out.println("John has a child called " + ch.getValue2().name));
 //    }
 
@@ -81,11 +83,11 @@ class Research { // high-level module - allows us to perform operations on a low
 
 class Triplet<U, V, T>
 {
-    public final U first;   	// first field of a Triplet
-    public final V second;  	// second field of a Triplet
-    public final T third;   	// third field of a Triplet
+    public final U first;   	// first field of a com.paigeruppel.udemy.solid.Triplet
+    public final V second;  	// second field of a com.paigeruppel.udemy.solid.Triplet
+    public final T third;   	// third field of a com.paigeruppel.udemy.solid.Triplet
 
-    // Constructs a new Triplet with the given values
+    // Constructs a new com.paigeruppel.udemy.solid.Triplet with the given values
     public Triplet(U first, V second, T third)
     {
         this.first = first;
@@ -132,7 +134,7 @@ class Triplet<U, V, T>
         return "(" + first + ", " + second + ", " + third + ")";
     }
 
-    // Factory method for creating a Typed immutable instance of Triplet
+    // Factory method for creating a Typed immutable instance of com.paigeruppel.udemy.solid.Triplet
     public static <U, V, T> Triplet <U, V, T> of(U a, V b, T c)
     {
         return new Triplet <>(a, b, c);
