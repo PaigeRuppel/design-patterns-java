@@ -1,7 +1,7 @@
 package com.paigeruppel.udemy.designpatterns.creational.factories;
 
 public class FactoryMethodDemo {
-    Point p = Point.newPolarPoint(2, 3);
+    Point p = Point.Factory.newPolarPoint(2, 3);
 }
 
 class Point {
@@ -13,7 +13,7 @@ class Point {
         this.y = y;
     }
 
-    // factory methods allow you to clearly name your signatures and parameters
+    // factory method pattern allow you to clearly name your signatures and parameters
 
 
     /*   public Point(double x, double y) {
@@ -26,17 +26,18 @@ class Point {
            x = rho * Math.cos(theta);
            y = rho * Math.sin(theta);
        }*/
+
+// By making a nested static class, you are able to access the private constructor
+    public static class Factory {
+        public static Point newCartesianPoint(double x, double y) {
+            return new Point(x, y);
+        }
+
+        public static Point newPolarPoint(double rho, double theta) {
+            double x = rho * Math.cos(theta);
+            double y = rho * Math.sin(theta);
+            return new Point(x, y);
+        }
+    }
 }
 
-// another option is to have all of your factory methods grouped under one factory class
-class PointFactory {
-    public static Point newCartesianPoint(double x, double y) {
-        return new Point(x, y);
-    }
-
-    public static Point newPolarPoint(double rho, double theta) {
-        double x = rho * Math.cos(theta);
-        double y = rho * Math.sin(theta);
-        return new Point(x, y);
-    }
-}
