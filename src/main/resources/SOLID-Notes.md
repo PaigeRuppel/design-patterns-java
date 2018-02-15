@@ -17,3 +17,7 @@
 ## Interface Segregation Principle (ISP)
 * Recommendation on how to split interfaces into smaller interfaces
 * Don't put any additional implementation into an interface than what the client will need
+* YAGNI => You Ain't Going to Need It
+* By splitting interfaces into as small of pieces as possible, you have added flexibility  
+  * You can either implement multiple interfaces in your class as needed
+  * Or you can make additional interfaces that extend the smaller interfaces as needed

@@ -1,3 +1,5 @@
+import java.io.PrintStream;
+
 public class InterfaceSegregationExample {
 }
 
@@ -11,7 +13,19 @@ interface Machine {
     void scan(Document document);
 }
 
-class MultiFunctionPrinter implements Machine {
+interface Printer {
+    void print(Document document);
+}
+
+interface FaxMachine {
+    void fax(Document document);
+}
+
+interface Scanner {
+    void scan(Document document);
+}
+
+class MultiFunctionPrinter implements Printer, FaxMachine, Scanner {
 
     @Override
     public void print(Document document) {
@@ -29,8 +43,21 @@ class MultiFunctionPrinter implements Machine {
     }
 }
 
+class Photocopier implements Printer, Scanner {
+
+    @Override
+    public void print(Document document) {
+
+    }
+
+    @Override
+    public void scan(Document document) {
+
+    }
+}
+
 // problem here = only have one option for implementation
-class OldFashionedPrinter implements Machine {
+class OldFashionedPrinter implements Printer {
 
     @Override
     public void print(Document document) {
@@ -39,13 +66,13 @@ class OldFashionedPrinter implements Machine {
 
     // we don't need these methods - so leave them empty? This will still give the user
     // the impression that faxing and scanning are still supported
-    @Override
-    public void fax(Document document) {
+//    @Override
+//    public void fax(Document document) {
 //        throw new Exception(); You could throw an exception, but then it will need to be propagated up to the interface
-    }
-
-    @Override
-    public void scan(Document document) {
-
-    }
+//    }
+//
+//    @Override
+//    public void scan(Document document) {
+//
+//    }
 }
