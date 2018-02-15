@@ -9,3 +9,7 @@
 
 *Builder* = When piecewise object construction is complicated, provide an API for doing it succinctly.
 
+* You can use fluent interfaces to improve the usability of builders
+* You can also use fluent interface inheritance with recursive generics  
+  * General reference on generics: http://www.baeldung.com/java-generics
+  * Reference on recursive generics: https://www.sitepoint.com/self-types-with-javas-generics/

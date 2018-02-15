@@ -2,8 +2,9 @@ package com.paigeruppel.udemy.designpatterns.creational;
 
 public class FluentBuilderDemo {
     public static void main(String[] args) {
-        PersonBuilder personBuilder = new PersonBuilder();
-        Person paige = personBuilder.withName("Paige").build();
+        EmployeeBuilder employeeBuilder = new EmployeeBuilder();
+        Person paige = employeeBuilder.withName("Paige").worksAt("Developer").build();
+        System.out.println(paige);
     }
 }
 
@@ -38,21 +39,30 @@ class Person {
 class PersonBuilder<SELF extends PersonBuilder<SELF>> {
     protected Person person = new Person();
 
-    public PersonBuilder withName(String name) {
+    public SELF withName(String name) {
         person.setName(name);
-        return this;
+        return self();
     }
 
     public Person build() {
         return person;
     }
+// this will allow you to override this behavior in derived classes
+    protected SELF self() {
+        return (SELF) this;
+    }
 }
 
-class EmployeeBuilder extends PersonBuilder {
+class EmployeeBuilder extends PersonBuilder<EmployeeBuilder> {
     // this is a problem - you can not use polymorphism with the current configuration
     // You can use recursive generics to overcome this problem
     public EmployeeBuilder worksAt(String position) {
         person.setPosition(position);
+        return self();
+    }
+
+    @Override
+    protected EmployeeBuilder self() {
         return this;
     }
 
