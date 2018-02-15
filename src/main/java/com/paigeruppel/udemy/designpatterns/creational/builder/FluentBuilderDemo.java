@@ -1,4 +1,4 @@
-package com.paigeruppel.udemy.designpatterns.creational;
+package com.paigeruppel.udemy.designpatterns.creational.builder;
 
 public class FluentBuilderDemo {
     public static void main(String[] args) {

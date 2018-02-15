@@ -1,4 +1,4 @@
-package com.paigeruppel.udemy.designpatterns.creational;
+package com.paigeruppel.udemy.designpatterns.creational.builder;
 
 import java.util.ArrayList;
 import java.util.Arrays;
