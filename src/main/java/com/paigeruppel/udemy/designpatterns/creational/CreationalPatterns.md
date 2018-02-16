@@ -46,3 +46,8 @@ ___
   * The cloning must be made convenient (i.e. through a factory)
 
 *Prototype* = A partially or fully initialized object that you copy (clone) and make use of
+
+* Shallow Copying = assigning a reference to one object to another object - the two objects share the same reference, so changing one object will automatically affect the other object
+* Deep Copying = can be achieved through the .clone() method - by assigning every data field to a new instance of that object
+    * You can accomplish this through the Cloneable interface, but this is not the best approach
+    * A copy constructor is a more palatable approach
