@@ -51,3 +51,24 @@ ___
 * Deep Copying = can be achieved through the .clone() method - by assigning every data field to a new instance of that object
     * You can accomplish this through the Cloneable interface, but this is not the best approach
     * A copy constructor is a more palatable approach
+
+___
+
+## Singleton
+* The design pattern everyone loves to hate
+    * *When discussing which patterns to drop, we found that we still love them all. (Not really - I'm in favor of dropping Singleton. Its use is almost always a design smell.)* -Erich Gamma
+* For systems that are supposed to be extensible and testable, Singleton is often a smell.
+* Motivation: 
+    * For some components it makes sense to only have one instance in the system
+        * Database repository
+        * Object factory
+    * E.g., the constructor call is **expensive**
+        * We only do it once
+        * We provide everyone with the same instance
+    * Want to prevent anyone creating additional copies 
+
+*Singleton* = A component which is instantiated only once
+
+##### Problems
+1. You can use reflection to get around the singleton mechanism
+2. Serialization - this will also violate the singleton mechanism
