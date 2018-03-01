@@ -1,6 +1,6 @@
 package com.paigeruppel.udemy.designpatterns.creational.prototype;
 
-import org.apache.commons.lang.SerializationUtils;
+import org.apache.commons.lang3.SerializationUtils;
 
 import java.io.Serializable;
 
