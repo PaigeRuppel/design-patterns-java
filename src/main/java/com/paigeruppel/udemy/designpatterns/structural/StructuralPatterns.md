@@ -34,3 +34,17 @@ ___
     * I.e., Foo and List<Foo> have common APIs
 
 *Composite* + A mechanism for treating individual (scalar) objects and compositions of objects in a uniform manner.
+
+___
+
+## Decorator
+* Motivation
+  * Want to augment an object with additional functionality
+  * Do not want to rewrite or alter existing code - this would violate OCP
+  * Want to keep new functionality separate - to uphold SRP
+  * Need to be able to interact with existing structures
+  * Two options:
+    * Inherit from required object if possible; some classes are final
+    * For classes that are final - Build a Decorator - which simply references the decorated object(s) and adds needed functionality
+
+*Decorator* = Facilitates the addition of behaviors to individual objects without inheriting from them
