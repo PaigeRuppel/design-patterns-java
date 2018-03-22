@@ -78,6 +78,7 @@ class BankAccountCommand implements Command {
     public void execute() {
         switch (action){
             case DEPOSIT:
+                succeeded = true;
                 account.deposit(amount);
                 break;
             case WITHDRAW:
