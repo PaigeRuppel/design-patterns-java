@@ -1,6 +1,7 @@
 package com.paigeruppel.udemy.designpatterns.behavioral.command;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class BankAccountCommandDemo {
@@ -8,12 +9,20 @@ public class BankAccountCommandDemo {
         BankAccount bankAccount = new BankAccount();
         System.out.println(bankAccount);
 
-        List<BankAccountCommand> commands = Arrays.asList(new BankAccountCommand(bankAccount, BankAccountCommand.Action.DEPOSIT, 100), new BankAccountCommand(bankAccount, BankAccountCommand.Action.WITHDRAW, 1000));
+        List<Command> commands = Arrays.asList(new BankAccountCommand(bankAccount, BankAccountCommand.Action.DEPOSIT, 100), new BankAccountCommand(bankAccount, BankAccountCommand.Action.WITHDRAW, 1000));
 
-        for (BankAccountCommand c : commands) {
+        for (Command c : commands) {
             c.execute();
             System.out.println(bankAccount);
         }
+
+        Collections.reverse(commands);
+        for (Command c : commands) {
+            c.undo();
+            System.out.println(bankAccount);
+        }
+
+        Collections.reverse(commands);
     }
 }
 
@@ -26,13 +35,13 @@ class BankAccount {
         System.out.println("Deposited: " + amount + "; Current balance is " + balance);
     }
 
-    public void withdraw(int amount) {
+    public boolean withdraw(int amount) {
         if (balance - amount >= overdraftLimit) {
             balance -= amount;
             System.out.println("Withdrew: " + amount + "; Current balance is " + balance);
-        } else {
-            System.out.println("Withdrawl amount exceeds overdraft limit.");
+            return true;
         }
+        return false;
     }
 
     @Override
@@ -45,11 +54,12 @@ class BankAccount {
 
 interface Command {
     void execute();
+    void undo();
 }
 
 class BankAccountCommand implements Command {
     private BankAccount account;
-
+    private boolean succeeded;
 
 
     public enum Action {
@@ -71,8 +81,22 @@ class BankAccountCommand implements Command {
                 account.deposit(amount);
                 break;
             case WITHDRAW:
-                account.withdraw(amount);
+                succeeded = account.withdraw(amount);
                 break;
         }
+    }
+
+    @Override
+    public void undo() {
+        if (!succeeded) return;
+        switch (action) {
+            case DEPOSIT:
+                account.withdraw(amount);
+                break;
+            case WITHDRAW:
+                account.deposit(amount);
+                break;
+        }
+
     }
 }
